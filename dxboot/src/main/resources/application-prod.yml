@@ -2,11 +2,26 @@ server:
   port: 8081
 
 spring:
-  # mysql
+  # mysql,druid
   datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    platform: mysql
     url: jdbc:mysql://192.168.135.63:3306/TCDP?useUnicode=true&characterEncoding=utf-8
     username: root
     password: 123456
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT1FROMDUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    filters: stat,wall,slf4j
+    logSlowSql: true
 
   # redis
   redis:

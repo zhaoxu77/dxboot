@@ -40,7 +40,7 @@ public class Scheduling implements SchedulingConfigurer {
 	public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
 		taskRegistrar.setTaskScheduler(taskExecutor());
 		taskRegistrar.getScheduler().schedule(() -> {
-            System.out.println("11111111111111");
+            System.out.println("Scheduling......");
         }, new CronTrigger(cron));
 	}
 
@@ -48,7 +48,7 @@ public class Scheduling implements SchedulingConfigurer {
 	public TaskScheduler taskExecutor() {
 		ThreadPoolTaskScheduler executor = new ThreadPoolTaskScheduler();
 		executor.setPoolSize(20);
-		executor.setThreadNamePrefix("alarm-Executor-");
+		executor.setThreadNamePrefix("task-Executor-");
 		executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
 		executor.setWaitForTasksToCompleteOnShutdown(true);
 		// wait times
