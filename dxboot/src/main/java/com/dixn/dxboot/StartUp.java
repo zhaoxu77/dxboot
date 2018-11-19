@@ -26,8 +26,7 @@ public class StartUp implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments var1) throws Exception {
-	    log.info("StartUp.........");
-
+	    log.info("StartUp......... ");
 	}
 
 }
