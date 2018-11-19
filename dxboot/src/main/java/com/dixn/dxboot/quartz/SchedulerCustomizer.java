@@ -6,15 +6,16 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
 /**
- * 定时任务自定义实体类配置
- *
- * @author：于起宇 <br/>
- * ===============================
- * Created with IDEA.
- * Date：2018/3/5
- * Time：下午11:33
- * 简书：http://www.jianshu.com/u/092df3f77bca
- * ================================
+ * @Description：Scheduler Customizer
+ * @projectName：dxboot
+ * @packageName： com.dixn.dxboot.quartz
+ * @ClassName：SchedulerCustomizer
+ * @author：zhaoxu
+ * @createTime：2018/11/19 20:18
+ * @upate：zhaoxu
+ * @updateDate：2018/11/19 20:18
+ * @remark：
+ * @version v1.0
  */
 @Configuration
 @EnableScheduling

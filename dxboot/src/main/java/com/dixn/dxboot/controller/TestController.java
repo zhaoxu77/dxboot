@@ -47,7 +47,7 @@ public class TestController {
     @ApiOperation(value="timer")
     public String timer(){
         //设置开始时间为1分钟后
-        long startAtTime = System.currentTimeMillis() + 1000 * 60;
+        long startAtTime = System.currentTimeMillis() + 1000 * 6;
         //任务名称
         String name = UUID.randomUUID().toString();
         //任务所属分组
