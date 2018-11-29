@@ -36,7 +36,7 @@ spring:
 
   data:
     mongodb:
-      uri: mongodb://192.168.135.62:27017
+      uri: mongodb://192.168.135.62fds:27017
       database: fcs
 
   # activemq

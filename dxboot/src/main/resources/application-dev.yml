@@ -25,14 +25,14 @@ spring:
 
   # redis
   redis:
-    host: 127.0.0.1
+    host: 192.168.135.68
     database: 0
     lettuce:
       pool:
         max-active: 8
         max-idle: 8
         min-idle: 0
-    password:
+    password: 12345678
 
   data:
     mongodb:
