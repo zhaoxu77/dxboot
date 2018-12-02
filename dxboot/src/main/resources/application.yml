@@ -6,10 +6,24 @@ spring:
     name: dxboot
 
   quartz:
-    #相关属性配置
+    #quartz相关属性配置
     properties:
       org:
         quartz:
           scheduler:
             instanceName: clusteredScheduler
             instanceId: AUTO
+
+#springboot 监控
+management:
+  server:
+    port: 9090
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
