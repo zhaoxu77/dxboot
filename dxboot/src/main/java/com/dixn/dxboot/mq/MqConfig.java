@@ -75,10 +75,12 @@ public class MqConfig {
 
 	@Bean
 	public JmsTemplate jmsTemplate() {
-		JmsTemplate jmsTemplate = new JmsTemplate(cachingConnectionFactory());
-		jmsTemplate.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
-		jmsTemplate.setSessionTransacted(false);
+		JmsTemplate jmsTemplate = new JmsTemplate(connectionFactory());
+		//jmsTemplate.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
+		//jmsTemplate.setSessionTransacted(false);
 		jmsTemplate.setPubSubDomain(false);
+        jmsTemplate.setExplicitQosEnabled(true);
+        jmsTemplate.setTimeToLive(10000);
 		return jmsTemplate;
 	}
 

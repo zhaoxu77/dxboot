@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
@@ -16,18 +17,25 @@ import org.springframework.test.context.junit4.SpringRunner;
 @Slf4j
 public class DxbootApplicationTests {
 
-    @Rule
-    public ContiPerfRule i = new ContiPerfRule();
+    //@Rule
+    //public ContiPerfRule i = new ContiPerfRule();
+
+    //@Autowired
+    //RedisTemplate redisTemplate;
 
     @Autowired
-    RedisTemplate redisTemplate;
+    JmsTemplate jmsTemplate;
 
     @Test
-    @PerfTest(invocations = 100000, threads = 100)
+    //@PerfTest(invocations = 100000, threads = 100)
     public void contextLoads() {
         //redisTemplate.opsForValue().set("test", "test2");
-        Object o = redisTemplate.opsForValue().get("admin");
+        //Object o = redisTemplate.opsForValue().get("admin");
        // log.info("redis=================" + o.toString());
+
+        jmsTemplate.convertAndSend("testTimeToLive", "2222");
+
+
     }
 
 }
