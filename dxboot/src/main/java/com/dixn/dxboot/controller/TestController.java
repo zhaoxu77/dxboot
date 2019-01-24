@@ -1,6 +1,10 @@
 package com.dixn.dxboot.controller;
 
+import com.dixn.dxboot.kafka.Message;
 import com.dixn.dxboot.quartz.Timer;
+import com.dixn.dxboot.service.DroolsService;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -8,11 +12,13 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
@@ -28,6 +34,11 @@ import java.util.UUID;
 @Api(tags="用户API")
 public class TestController {
 
+    @Autowired
+    private KafkaTemplate<String, String> kafkaTemplate;
+
+    private Gson gson = new GsonBuilder().create();
+
     /**
      * 注入任务调度器
      */
@@ -39,6 +50,14 @@ public class TestController {
     @ApiImplicitParams({@ApiImplicitParam(name="id",value="查询ID",required=true),
             @ApiImplicitParam(name="name",value="查询name",required=true)})
     public String index(@PathVariable("id") String id, @PathVariable("name") String name) {
+
+        Message message = new Message();
+        message.setId(System.currentTimeMillis());
+        message.setMsg(UUID.randomUUID().toString());
+        message.setSendTime(LocalDateTime.now());
+        log.info("+++++++++++++++++++++  message = {}", gson.toJson(message));
+        kafkaTemplate.send("test2", gson.toJson(message));
+
         return name;
     }
 
@@ -63,5 +82,13 @@ public class TestController {
             e.printStackTrace();
         }
         return "ok";
+    }
+
+    @Autowired
+    private DroolsService droolsService;
+
+    @GetMapping("/showRults")
+    public String showRults(){
+        return droolsService.fireRule();
     }
 }

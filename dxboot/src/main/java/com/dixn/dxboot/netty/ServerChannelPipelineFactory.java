@@ -67,6 +67,7 @@ public class ServerChannelPipelineFactory {
 					ch.pipeline().addLast(new LoggingHandler(LogLevel.INFO));
 					ch.pipeline().addLast(new IdleStateHandler(connection_timeout, 0, 0, TimeUnit.MINUTES));
                     ch.pipeline().addLast(new StringDecoder());
+                    ch.pipeline().addLast(new StringEncoder());
 					// 处理业务类
 					ch.pipeline().addLast(new ChannelHandler());
 				}

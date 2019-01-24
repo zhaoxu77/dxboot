@@ -1,5 +1,6 @@
 package com.dixn.dxboot;
 
+import com.dixn.dxboot.kafka.KafkaSender;
 import lombok.extern.slf4j.Slf4j;
 import org.databene.contiperf.PerfTest;
 import org.databene.contiperf.junit.ContiPerfRule;
@@ -23,8 +24,8 @@ public class DxbootApplicationTests {
     //@Autowired
     //RedisTemplate redisTemplate;
 
-    @Autowired
-    JmsTemplate jmsTemplate;
+    //@Autowired
+    //JmsTemplate jmsTemplate;
 
     @Test
     //@PerfTest(invocations = 100000, threads = 100)
@@ -33,9 +34,24 @@ public class DxbootApplicationTests {
         //Object o = redisTemplate.opsForValue().get("admin");
        // log.info("redis=================" + o.toString());
 
-        jmsTemplate.convertAndSend("testTimeToLive", "2222");
+        //jmsTemplate.convertAndSend("testTimeToLive", "2222");
 
 
+    }
+
+    @Autowired
+    private KafkaSender sender;
+    @Test
+    public void aaa(){
+        for (int i = 0; i < 3; i++) {
+            //调用消息发送类中的消息发送方法
+            sender.send();
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }
