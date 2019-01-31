@@ -32,7 +32,7 @@ public class StartUp implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments var1) throws Exception {
 	    log.info("netty server start......... ");
-        //startTcpServer();
+        startTcpServer();
 	}
 
     public void startTcpServer() throws Exception {

@@ -19,7 +19,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * @version v1.0
  */
 @SpringBootApplication
-@PropertySource("classpath:base.properties")
 @EnableJms
 @EnableScheduling
 public class DxbootApplication {

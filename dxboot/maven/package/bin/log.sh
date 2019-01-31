@@ -1,1 +1,0 @@
-tail -100f ../logs/info-authc.log

@@ -15,9 +15,9 @@
 	<!-- INFO日志定义appender -->
 	<appender name="INFO_FILE"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<File>../logs/info-iot-gateway.log</File>
+		<File>../logs/info-dx-gateway.log</File>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>../logs/info-iot-boot-%d{yyyyMMdd}.log.%i
+			<fileNamePattern>../logs/info-dx-boot-%d{yyyyMMdd}.log.%i
 			</fileNamePattern>
 			<timeBasedFileNamingAndTriggeringPolicy
 				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
@@ -37,9 +37,9 @@
 		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
 			<level>ERROR</level>
 		</filter>
-		<File>../logs/error-iot-gateway.log</File>
+		<File>../logs/error-dx-gateway.log</File>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>../logs/error-iot-boot-%d{yyyyMMdd}.log.%i
+			<fileNamePattern>../logs/error-dx-boot-%d{yyyyMMdd}.log.%i
 			</fileNamePattern>
 			<timeBasedFileNamingAndTriggeringPolicy
 				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
