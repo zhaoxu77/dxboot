@@ -43,11 +43,11 @@ public class DxbootApplicationTests {
     private KafkaSender sender;
     @Test
     public void aaa(){
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 1000; i++) {
             //调用消息发送类中的消息发送方法
             sender.send();
             try {
-                Thread.sleep(3000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

@@ -15,7 +15,7 @@
 	<!-- INFO日志定义appender -->
 	<appender name="INFO_FILE"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<File>../logs/info-dx-gateway.log</File>
+		<File>../logs/info-dx-boot.log</File>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<fileNamePattern>../logs/info-dx-boot-%d{yyyyMMdd}.log.%i
 			</fileNamePattern>
@@ -26,8 +26,16 @@
 			<maxHistory>2</maxHistory>
 		</rollingPolicy>
 		<layout class="ch.qos.logback.classic.PatternLayout">
-			<Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}	-%msg%n
-			</Pattern>
+
+            <springProfile name="dev">
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} ----> [%thread] ---> %-5level %logger{50} - %msg%n</pattern>
+            </springProfile>
+            <springProfile name="!dev">
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} ==== [%thread] ==== %-5level %logger{50} - %msg%n</pattern>
+            </springProfile>
+
+			<!--<Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}	-%msg%n
+			</Pattern>-->
 		</layout>
 	</appender>
 
@@ -37,7 +45,7 @@
 		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
 			<level>ERROR</level>
 		</filter>
-		<File>../logs/error-dx-gateway.log</File>
+		<File>../logs/error-dx-boot.log</File>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<fileNamePattern>../logs/error-dx-boot-%d{yyyyMMdd}.log.%i
 			</fileNamePattern>

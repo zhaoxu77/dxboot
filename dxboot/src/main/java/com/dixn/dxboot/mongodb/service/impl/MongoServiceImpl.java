@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @Description  mongo service impl
  * @projectName：FCS
@@ -27,6 +30,10 @@ public class MongoServiceImpl implements MongoService {
     @Override
     public void save(HistoryData historyData) {
         mongoTemplate.save(historyData);
+
+        List<HistoryData> historyData1 = new ArrayList<>();
+        mongoTemplate.insertAll(historyData1);
+
     }
 
 }
