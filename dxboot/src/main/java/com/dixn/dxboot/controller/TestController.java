@@ -1,6 +1,10 @@
 package com.dixn.dxboot.controller;
 
+import com.dixn.dxboot.jpa.dao.FcsDao;
+import com.dixn.dxboot.jpa.entity.Fcs;
 import com.dixn.dxboot.kafka.Message;
+import com.dixn.dxboot.mybatis.mapper.TeFcsMapper;
+import com.dixn.dxboot.mybatis.model.TeFcs;
 import com.dixn.dxboot.quartz.Timer;
 import com.dixn.dxboot.service.DroolsService;
 import com.google.gson.Gson;
@@ -20,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -90,5 +95,25 @@ public class TestController {
     @GetMapping("/showRults")
     public String showRults(){
         return droolsService.fireRule();
+    }
+
+    @Autowired
+    private FcsDao fcsDao;
+
+    @GetMapping("/showJpa")
+    public String showJpa() {
+        List<Fcs> all = fcsDao.findAll();
+        System.out.println(all.size());
+        return String.valueOf(all.size());
+    }
+
+    @Autowired
+    TeFcsMapper teFcsMapper;
+
+    @GetMapping("/showMybatis")
+    public String showMybatis() {
+        TeFcs teFcs = teFcsMapper.selectByPrimaryKey("798df8fbe7b711e88a8c002246209dcc");
+//        teFcsMapper.deleteByPrimaryKey("d46fec47e66511e88a8c002246209dcc");
+        return teFcs.getIpFcs();
     }
 }

@@ -18,7 +18,7 @@ import java.util.Optional;
 @Component
 @Slf4j
 public class KafkaReceiver {
-    @KafkaListener(topics = {"test2"})
+    @KafkaListener(topics = {"test1"})
     public void listen(ConsumerRecord<?, ?> record) {
         Optional<?> kafkaMessage = Optional.ofNullable(record.value());
         if (kafkaMessage.isPresent()) {
@@ -29,7 +29,7 @@ public class KafkaReceiver {
     }
 
 
-    private static final String TPOIC = "test4";
+    /*private static final String TPOIC = "test4";
 
     @KafkaListener(id = "id0", topicPartitions = { @TopicPartition(topic = TPOIC, partitions = { "0" }) })
     public void listenPartition0(ConsumerRecord<?, ?> record) {
@@ -55,5 +55,5 @@ public class KafkaReceiver {
             String topic = record.topic();
             log.info("p1 Received message={}", message);
         }
-    }
+    }*/
 }

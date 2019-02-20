@@ -51,6 +51,7 @@ spring:
       idle-timeout: 30000
       expiry-timeout: 10000
 
+  #kafka配置
   kafka:
     bootstrap-servers: 192.168.135.68:9092
     consumer:
@@ -71,6 +72,15 @@ spring:
 #      buffer-memory: 524288
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+#mybatis配置
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  # type-aliases-package: com.dixn.dxboot.mybatis.model
 
 mqtt:
   ip:
