@@ -1,5 +1,6 @@
 package com.dixn.dxboot.controller;
 
+import com.dixn.dxboot.aop.annotation.Log;
 import com.dixn.dxboot.jpa.dao.FcsDao;
 import com.dixn.dxboot.jpa.entity.Fcs;
 import com.dixn.dxboot.kafka.Message;
@@ -54,6 +55,7 @@ public class TestController {
     @ApiOperation(value="用户查询(ID)")
     @ApiImplicitParams({@ApiImplicitParam(name="id",value="查询ID",required=true),
             @ApiImplicitParam(name="name",value="查询name",required=true)})
+    @Log(value="请求了index方法")
     public String index(@PathVariable("id") String id, @PathVariable("name") String name) {
 
         Message message = new Message();

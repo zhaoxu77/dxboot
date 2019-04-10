@@ -5,9 +5,9 @@ spring:
   # mysql,druid
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    driverClassName: com.mysql.jdbc.Driver
+    driverClassName: com.mysql.cj.jdbc.Driver
     platform: mysql
-    url: jdbc:mysql://127.0.0.1:3306/TCDP?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/tcdp?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
     username: root
     password: 12345678
     initialSize: 5
@@ -49,7 +49,7 @@ spring:
       enabled: true
       max-connections: 500
       idle-timeout: 30000
-      expiry-timeout: 10000
+#      expiry-timeout: 10000
 
   #kafka配置
   kafka:

@@ -3,6 +3,7 @@ package com.dixn.dxboot;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -23,6 +24,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableJms
 @EnableScheduling
 @MapperScan("com.dixn.dxboot.mybatis.mapper")
+@EnableAspectJAutoProxy
 public class DxbootApplication {
     public static void main(String[] args) {
         SpringApplication.run(DxbootApplication.class, args);

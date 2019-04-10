@@ -12,6 +12,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.scheduling.support.CronTrigger;
 
+import java.util.Date;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
@@ -38,13 +39,17 @@ public class Scheduling implements SchedulingConfigurer {
 
 	@Override
 	public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
-		taskRegistrar.setTaskScheduler(taskExecutor());
+		/*taskRegistrar.setTaskScheduler(taskExecutor());
 		taskRegistrar.getScheduler().schedule(() -> {
             System.out.println("Scheduling......");
-        }, new CronTrigger(cron));
+        }, new CronTrigger(cron));*/
+		taskRegistrar.setTaskScheduler(taskScheduler());
+		taskRegistrar.getScheduler().schedule(() ->
+				log.info("SchedulingConfigurer定时任务：" + new Date()),
+				new CronTrigger("0/3 * * * * ?"));
 	}
 
-	@Bean("taskExecutor")
+	/*@Bean("taskExecutor")
 	public TaskScheduler taskExecutor() {
 		ThreadPoolTaskScheduler executor = new ThreadPoolTaskScheduler();
 		executor.setPoolSize(20);
@@ -54,6 +59,30 @@ public class Scheduling implements SchedulingConfigurer {
 		// wait times
 		executor.setAwaitTerminationSeconds(60);
 		return executor;
+	}*/
+/*	@Bean("taskExecutor")
+	public TaskScheduler taskExecutor() {
+		ThreadPoolTaskScheduler executor = new ThreadPoolTaskScheduler();
+		executor.initialize();
+		executor.setPoolSize(20);
+		executor.setThreadNamePrefix("oKong-Executor-");
+		executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
+		//调度器shutdown被调用时等待当前被调度的任务完成
+		executor.setWaitForTasksToCompleteOnShutdown(true);
+		//等待时长
+		executor.setAwaitTerminationSeconds(60);
+		return executor;
+	}*/
+
+	@Bean(destroyMethod = "shutdown")
+	public ThreadPoolTaskScheduler taskScheduler() {
+		ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
+		scheduler.initialize();
+		scheduler.setPoolSize(20);
+		scheduler.setThreadNamePrefix("task-");
+		scheduler.setAwaitTerminationSeconds(60);
+		scheduler.setWaitForTasksToCompleteOnShutdown(true);
+		return scheduler;
 	}
 
 }
