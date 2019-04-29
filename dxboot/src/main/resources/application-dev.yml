@@ -53,25 +53,27 @@ spring:
 
   #kafka配置
   kafka:
-    bootstrap-servers: 192.168.135.68:9092
-    consumer:
-      group-id: 0
-      auto-offset-reset: earliest
-      # 如果为true，消费者的偏移量将在后台定期提交。
-      enable-auto-commit: true
-      # 自动提交周期
-      auto-commit-interval: 100
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-    producer:
-      # 发送失败重试次数。
-      retries: 0
-      # 每次批量发送消息的数量 批处理条数：当多个记录被发送到同一个分区时，生产者会尝试将记录合并到更少的请求中。这有助于客户端和服务器的性能。
-#      batch-size: 65536
-      # 批处理缓冲区。
-#      buffer-memory: 524288
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    bootstrap-servers: 192.168.135.68:9092,192.168.135.62:9092,192.168.135.63:9092
+#    consumer:
+#      group-id: 0
+#      auto-offset-reset: earliest
+#      # 如果为true，消费者的偏移量将在后台定期提交。
+#      enable-auto-commit: true
+#      # 自动提交周期
+#      auto-commit-interval: 100
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#    producer:
+#      # 发送失败重试次数。
+#      retries: 0
+#      # 每次批量发送消息的数量 批处理条数：当多个记录被发送到同一个分区时，生产者会尝试将记录合并到更少的请求中。这有助于客户端和服务器的性能。
+##      batch-size: 65536
+#      # 批处理缓冲区。
+##      buffer-memory: 524288
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      #ack 0 1 all
+#      acks: 1
   jpa:
     hibernate:
       ddl-auto: update
@@ -99,7 +101,6 @@ alarm_queue_cron: 0/20 * * * * ?
 
 swagger:
   enabled: true
-
 
 tcp:
   port: 8087

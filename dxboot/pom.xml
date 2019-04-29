@@ -228,6 +228,7 @@
                     <include>templates/**</include>
                     <include>*.xml</include>
                     <include>*.properties</include>
+                    <include>kafka/*.properties</include>
                     <include>*.jks</include>
                 </includes>
             </resource>

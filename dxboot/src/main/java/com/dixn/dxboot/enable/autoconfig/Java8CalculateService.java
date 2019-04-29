@@ -1,6 +1,5 @@
-package com.dixn.dxboot.enable;
+package com.dixn.dxboot.enable.autoconfig;
 
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.stream.Stream;
@@ -11,9 +10,8 @@ import java.util.stream.Stream;
  * @author
  * @create 2019-04-07 21:31
  **/
-//@Profile("Java8")
-//@Service
-public class Java8CalculateService implements CalculateService {
+@Service
+public class Java8CalculateService implements JavaCalculateService {
     @Override
     public Integer sum(Integer... values) {
         int sum = Stream.of(values).reduce(0, Integer::sum);

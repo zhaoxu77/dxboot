@@ -1,4 +1,4 @@
-package com.dixn.dxboot.enable;
+package com.dixn.dxboot.enable.autoconfig;
 
 import org.springframework.context.annotation.Conditional;
 
@@ -13,8 +13,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @Documented
-@Conditional(OnSystemPropertyCondition.class)
-public @interface ConditionOnSystemPorperty {
-
+@Conditional(Java7Condition.class)
+public @interface JavaOnSystemPorperty {
     String value();
 }

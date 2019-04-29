@@ -13,7 +13,7 @@ import io.netty.handler.logging.LoggingHandler;
 
 public class CustomClient {
 
-    static final String HOST = System.getProperty("host", "192.168.96.102");
+    static final String HOST = System.getProperty("host", "13.47.6.2");
     static final int PORT = Integer.parseInt(System.getProperty("port", "8087"));
     static final int SIZE = Integer.parseInt(System.getProperty("size", "256"));
 
@@ -29,7 +29,7 @@ public class CustomClient {
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {
                             ch.pipeline().addLast(new LoggingHandler(LogLevel.INFO));
-                            ch.pipeline().addLast(new CustomEncoder());
+//                            ch.pipeline().addLast(new CustomEncoder());
                             ch.pipeline().addLast(new CustomClientHandler());
                         }
                     });

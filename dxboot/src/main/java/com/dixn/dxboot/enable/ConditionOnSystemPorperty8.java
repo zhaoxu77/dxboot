@@ -13,8 +13,11 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @Documented
-@Conditional(OnSystemPropertyCondition.class)
-public @interface ConditionOnSystemPorperty {
+@Conditional(OnSystemPropertyCondition8.class)
+public @interface ConditionOnSystemPorperty8 {
+
+    String name();
+
 
     String value();
 }

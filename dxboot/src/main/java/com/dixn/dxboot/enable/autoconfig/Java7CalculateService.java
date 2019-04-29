@@ -1,6 +1,5 @@
-package com.dixn.dxboot.enable;
+package com.dixn.dxboot.enable.autoconfig;
 
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 /**
@@ -9,9 +8,7 @@ import org.springframework.stereotype.Service;
  * @author
  * @create 2019-04-07 21:31
  **/
-//@Profile("Java7")
-//@Service
-public class Java7CalculateService implements CalculateService {
+public class Java7CalculateService implements JavaCalculateService {
     @Override
     public Integer sum(Integer... values) {
         int sum = 0;

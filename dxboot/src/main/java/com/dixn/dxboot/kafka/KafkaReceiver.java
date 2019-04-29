@@ -4,8 +4,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.annotation.TopicPartition;
+import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Component;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +20,7 @@ import java.util.Optional;
 @Component
 @Slf4j
 public class KafkaReceiver {
+
     @KafkaListener(topics = {"test1"})
     public void listen(ConsumerRecord<?, ?> record) {
         Optional<?> kafkaMessage = Optional.ofNullable(record.value());
@@ -27,6 +30,18 @@ public class KafkaReceiver {
             log.info("------------------ message =" + message);
         }
     }
+
+
+    // 批量接收
+    /*@KafkaListener(topics = {"test"}, containerFactory = "listenerContainerFactory")
+    public void registryReceiver(List<ConsumerRecord<Integer, String>> integerStringConsumerRecords, Acknowledgment acknowledgment) {
+        Iterator<ConsumerRecord<Integer, String>> it = integerStringConsumerRecords.iterator();
+        while (it.hasNext()){
+            ConsumerRecord<Integer, String> consumerRecords = it.next();
+            //dosome
+            acknowledgment.acknowledge();
+        }
+    }*/
 
 
     /*private static final String TPOIC = "test4";
