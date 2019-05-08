@@ -43,6 +43,7 @@
                 <include>*.xml</include>
                 <include>*.properties</include>
                 <include>*.jks</include>
+                <include>kafka/*.properties</include>
             </includes>
         </fileSet>
 

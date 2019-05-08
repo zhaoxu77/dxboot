@@ -16,7 +16,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-//@PropertySource(value = "classpath:kafka/kafka.properties")
 @PropertySource(value = {"classpath:kafka/kafka.properties"},
         ignoreResourceNotFound = false, encoding = "UTF-8", name = "kafka.properties")
 public class KafkaConsumerConfig {
