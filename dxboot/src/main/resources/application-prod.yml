@@ -50,6 +50,14 @@ spring:
       idle-timeout: 30000
 #      expiry-timeout: 10000
 
+  #kafka配置
+  kafka:
+    bootstrap-servers: 192.168.135.68:9092,192.168.135.62:9092,192.168.135.63:9092
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
 
 mqtt:
   ip:

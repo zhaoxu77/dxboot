@@ -34,7 +34,6 @@ public class KafkaSender {
         message.setSendTime(LocalDateTime.now());
         log.info("+++++++++++++++++++++  message = {}", gson.toJson(message));
         kafkaTemplate.send("test4", gson.toJson(message));
-
     }
 
 }

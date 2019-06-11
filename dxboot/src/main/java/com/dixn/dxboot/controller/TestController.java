@@ -58,12 +58,12 @@ public class TestController {
     @Log(value="请求了index方法")
     public String index(@PathVariable("id") String id, @PathVariable("name") String name) {
 
-        Message message = new Message();
+        /*Message message = new Message();
         message.setId(System.currentTimeMillis());
         message.setMsg(UUID.randomUUID().toString());
         message.setSendTime(LocalDateTime.now());
         log.info("+++++++++++++++++++++  message = {}", gson.toJson(message));
-        kafkaTemplate.send("test2", gson.toJson(message));
+        kafkaTemplate.send("test2", gson.toJson(message));*/
 
         return name;
     }

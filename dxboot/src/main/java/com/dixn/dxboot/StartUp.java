@@ -47,4 +47,10 @@ public class StartUp implements ApplicationRunner {
         serverChannelPipelineFactory.run();
     }
 
+    public static void main(String[] args) {
+        String str = "test";
+        String str1 = "te" + new String("st");
+        System.err.println(str == str1);
+    }
+
 }

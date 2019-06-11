@@ -17,14 +17,14 @@ public @interface Log {
      * 日志描述，这里使用了@AliasFor 别名。spring提供的
      * @return
      */
-    @AliasFor("value")
+    @AliasFor("desc")
     String value() default "";
 
     /**
      * 日志描述
      * @return
      */
-    @AliasFor("desc")
+    @AliasFor("value")
     String desc() default "";
 
     /**
