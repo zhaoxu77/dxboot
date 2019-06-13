@@ -1,6 +1,7 @@
 package com.dixn.dxboot.controller;
 
 import com.dixn.dxboot.aop.annotation.Log;
+import com.dixn.dxboot.exception.CommonException;
 import com.dixn.dxboot.jpa.dao.FcsDao;
 import com.dixn.dxboot.jpa.entity.Fcs;
 import com.dixn.dxboot.kafka.Message;
@@ -65,6 +66,11 @@ public class TestController {
         log.info("+++++++++++++++++++++  message = {}", gson.toJson(message));
         kafkaTemplate.send("test2", gson.toJson(message));*/
 
+        try {
+            int i = 1/0;
+        } catch (Exception e) {
+            throw new CommonException("除数错误", "001");
+        }
         return name;
     }
 
