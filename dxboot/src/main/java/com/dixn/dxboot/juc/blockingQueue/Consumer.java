@@ -1,9 +1,11 @@
 package com.dixn.dxboot.juc.blockingQueue;
 
-public class Consumer implements Runnable {
+import java.util.concurrent.Callable;
+
+public class Consumer implements Callable {
 
     @Override
-    public void run() {
+    public Object call() throws Exception {
         while (true) {
             try {
                 Object obj = Request.getInstance().take();
