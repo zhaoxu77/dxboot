@@ -28,7 +28,7 @@
         <activemq.pool.version>5.14.5</activemq.pool.version>
         <swagger.verion>2.8.0</swagger.verion>
         <alibaba.fastjson.version>1.2.49</alibaba.fastjson.version>
-        <netty.version>4.1.30.Final</netty.version>
+        <netty.version>4.1.42.Final</netty.version>
     </properties>
 
     <dependencies>
